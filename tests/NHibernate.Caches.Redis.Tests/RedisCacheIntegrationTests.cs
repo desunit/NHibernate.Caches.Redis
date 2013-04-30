@@ -37,10 +37,9 @@ namespace NHibernate.Caches.Redis.Tests
                     .ExposeConfiguration(cfg =>
                     {
                         cfg.SetProperty(NHibernate.Cfg.Environment.GenerateStatistics, "true");
-                    })
-                    .Cache(c =>
-                    {
-                        c.UseQueryCache().UseSecondLevelCache().ProviderClass<RedisCacheProvider>();
+                        cfg.SetProperty(NHibernate.Cfg.Environment.UseQueryCache, "true");
+                        cfg.SetProperty(NHibernate.Cfg.Environment.UseSecondLevelCache, "true");
+                        cfg.SetProperty(NHibernate.Cfg.Environment.CacheProvider, typeof(RedisCacheProvider).AssemblyQualifiedName);
                     })
                     .BuildConfiguration();
             }

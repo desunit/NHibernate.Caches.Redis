@@ -65,13 +65,14 @@ namespace NHibernate.Caches.Redis
                 log.Debug("building cache with region: " + regionName + ", properties: " + sb);
             }
 
+            /*
             RedisCacheElement configElement = null;
             if (!String.IsNullOrWhiteSpace(regionName))
             {
                 configElement = config.Caches[regionName];
-            }
+            }*/
 
-            return new RedisCache(regionName, properties, configElement, clientManagerStatic);
+            return new RedisCacheNew(regionName, properties, clientManagerStatic);
         }
 
         public long NextTimestamp()
